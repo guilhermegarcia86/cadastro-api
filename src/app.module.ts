@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
+import { LivroModule } from './model/livro/livro.module';
 
 @Module({
-  imports: [],
+  imports: [LivroModule],
   controllers: [],
   providers: [],
 })
