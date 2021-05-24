@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
-import { Livro } from "./livro.entity";
-import { LivroService } from "./livro.service";
+import { Livro } from "../../../adapter/repository/typeorm/entity/livro.entity";
+import { LivroService } from "../../../domain/usecases/livro/livro.service";
 
 @Controller('livro')
 export class LivroController {

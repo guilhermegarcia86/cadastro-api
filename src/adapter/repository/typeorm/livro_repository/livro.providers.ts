@@ -1,5 +1,5 @@
 import { Connection } from "typeorm";
-import { Livro } from "./livro.entity";
+import { Livro } from "../entity/livro.entity";
 
 export const livroProviders = [
     {

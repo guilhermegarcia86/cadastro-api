@@ -1,0 +1,11 @@
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "user",
+    "password": "user",
+    "database": "bookstore",
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "synchronize": true,
+    "autoLoadEntities": true
+  }

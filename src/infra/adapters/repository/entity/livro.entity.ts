@@ -1,8 +1,8 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Autor } from "../autor/autor.entity";
+import { AutorEntity } from "./autor.entity";
 
 @Entity()
-export class Livro {
+export class LivroEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -10,7 +10,6 @@ export class Livro {
     @Column({length:200})
     name: string;
 
-    @ManyToOne(type => Autor, autor => autor.livros)
-    autor: Autor
-
+    @ManyToOne(type => AutorEntity, autor => autor.livros)
+    autor: AutorEntity
 }
