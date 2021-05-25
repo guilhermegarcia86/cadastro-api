@@ -26,8 +26,8 @@ export class ConfigServiceModule{
                     provide: ConfigServiceModule.FIND_ALL_LIVRO_SERVICE,
                     useFactory: (livroRepository: LivroRepositoryTypeORM) => new FindAllLivroService(livroRepository)
                 }
-            ]
+            ],
+            exports: [ConfigServiceModule.FIND_ALL_LIVRO_SERVICE, ConfigServiceModule.CREATE_LIVRO_SERVICE]
         }
     }
-
 }

@@ -7,6 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
+    {logger: ['log', 'debug', 'error', 'warn']}
   );
 
   const config = new DocumentBuilder()
