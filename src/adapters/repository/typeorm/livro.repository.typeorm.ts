@@ -15,25 +15,17 @@ export default class LivroRepositoryTypeORM implements LivroRepository {
     constructor(@InjectRepository(LivroEntity) private readonly livroEntityRepository: Repository<LivroEntity>){}
 
     async save(livro: Livro): Promise<Livro> {
-        const livroToSave: LivroEntity = this.mapToLivroEntity(livro);
 
-        this.logger.log(`Livro pra salvar nome: ${livroToSave.name}`)
-        this.logger.log(`Autor pra salvar nome: ${livroToSave.autor.name}`)
+        const livroEntity: LivroEntity = this.mapToLivroEntity(livro)
 
-        const livroSaved: LivroEntity = await this.livroEntityRepository.save(livroToSave);
+        const livroSaved: LivroEntity = await this.livroEntityRepository.save(livroEntity)
 
-        this.logger.log(`Livro salvo id: ${livroSaved.id}`)
-        this.logger.log(`Livro salvo nome: ${livroSaved.name}`)
-        this.logger.log(`Livro salvo autor: ${livroSaved.autor}`)
-
-        const livroReturn: Livro = this.mapToLivro(livroSaved)
-
-        return livroReturn;
+        return this.mapToLivro(livroSaved)
     }
 
     async findAll(): Promise<Livro[]> {
 
-        const livroEntityArray: LivroEntity[] = await this.livroEntityRepository.find();
+        const livroEntityArray: LivroEntity[] = await this.livroEntityRepository.find()
 
         const livroArray: Livro[] = livroEntityArray.map((livroEntity) => {
             return this.mapToLivro(livroEntity)
@@ -47,8 +39,10 @@ export default class LivroRepositoryTypeORM implements LivroRepository {
         livroEntity.name = livro.name
 
         let autorEntity = new AutorEntity()
+        if(!!livro.autor.id){
+            autorEntity.id = Number(livro.autor.id)
+        }
         autorEntity.name = livro.autor.name
-        autorEntity.id = Number(livro.autor.id)
 
         livroEntity.autor = autorEntity
 

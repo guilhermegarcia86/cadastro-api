@@ -10,6 +10,6 @@ export class LivroEntity {
     @Column({length:200})
     name: string;
 
-    @ManyToOne(type => AutorEntity, autor => autor.livros)
+    @ManyToOne(type => AutorEntity, autor => autor.livros, { cascade: ['insert'], eager: true })
     autor: AutorEntity
 }

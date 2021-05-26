@@ -10,7 +10,7 @@ export class AutorEntity {
     @Column({ length: 100})
     name: string;
 
-    @OneToMany(type => LivroEntity, livro => livro.autor)
+    @OneToMany(type => LivroEntity, livro => livro.autor, { cascade: ['remove'] })
     livros: LivroEntity[]
 
 }
