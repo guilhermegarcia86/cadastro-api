@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ControllerModule } from './controller/controller.module';
-
+import { ControllerModule } from 'src/adapters/controller/rest/controller.module';
 
 @Module({
   imports: [ControllerModule]

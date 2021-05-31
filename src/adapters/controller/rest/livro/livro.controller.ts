@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Inject, Post } from "@nestjs/common";
-import { ConfigServiceModule } from "src/application/config/config-service.module";
 import { Livro } from "src/domain/livro/livro";
 import { CreateLivroService } from "src/usecase/create-livro-service";
 import { FindAllLivroService } from "src/usecase/find-all-livro-service";
+import { ConfigServiceModule } from "../config/config-service.module";
 
 @Controller('livro')
 export class LivroController {
